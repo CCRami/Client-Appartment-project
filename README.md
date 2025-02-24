@@ -1,4 +1,26 @@
-# ProjectName
+# Client-Appartment-Project
+
+This project is an Angular application for managing client apartments. It includes features such as adding apartments, adding clients, viewing residences, and more.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Development Server](#development-server)
+- [Code Scaffolding](#code-scaffolding)
+- [Build](#build)
+- [Running Unit Tests](#running-unit-tests)
+- [Running End-to-End Tests](#running-end-to-end-tests)
+- [Further Help](#further-help)
+
+## Installation
+
+To install the dependencies, run:
+
+```sh
+npm install
+
+
+## Specification
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
