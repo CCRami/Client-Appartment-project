@@ -1,0 +1,44 @@
+<div>
+    <!-- Barre de recherche -->
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher par adresse..." class="search-input">
+</div>
+
+<div class="residences-container">
+    <div *ngFor="let residence of filterResidences()" class="residence-card">
+        <img [src]="residence.image" alt="{{ residence.name }}">
+        <h3>{{ residence.name }}</h3>
+
+        <!-- Bouton pour afficher l'adresse -->
+        <button (click)="showLocation(residence.id, residence.address)">Show Location</button>
+        <p *ngIf="showAddresses[residence.id]">{{ residence.address }}</p>
+
+        <!-- Affichage du statut avec icônes -->
+        <p [ngClass]="{
+            'status-available': residence.status === 'Disponible',
+            'status-sold': residence.status === 'Vendu',
+            'status-construction': residence.status === 'En Construction'
+        }">
+            <span *ngIf="residence.status === 'Disponible'">✅ Disponible</span>
+            <span *ngIf="residence.status === 'Vendu'">❌ Vendu</span>
+            <span *ngIf="residence.status === 'En Construction'">🚧 En Construction</span>
+        </p>
+        <button [routerLink]="['/details', residence.id]">Voir détails</button>
+        &nbsp; 
+        <!-- Bouton Ajouter aux favoris -->
+        <button (click)="addToFavorites(residence)">❤️ Like</button>
+    </div>
+</div>
+
+<!-- Liste des Favoris -->
+<h2>Favoris ❤️</h2>
+<div *ngIf="favoriteResidences.length === 0">
+    <p>Aucune résidence en favori pour le moment.</p>
+</div>
+<div class="favorites-container">
+    <div *ngFor="let residence of favoriteResidences" class="favorite-card">
+        <img [src]="residence.image" alt="{{ residence.name }}">
+        <h3>{{ residence.name }}</h3>
+
+        <button (click)="removeFromFavorites(residence.id)">❌ Retirer</button>
+    </div>
+</div>

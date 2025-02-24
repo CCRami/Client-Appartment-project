@@ -1,0 +1,27 @@
+<form [formGroup]="userForm" (submit)="add()">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <div *ngIf="userForm.get('name')?.invalid">
+        <div *ngIf="userForm.get('name')?.errors?.['required']"> Name is required. </div>
+        <div *ngIf="userForm.get('name')?.errors?.['minlength']"> Name must be at least 4 characters long. </div>
+        <div *ngIf="userForm.get('name')?.errors?.['forbiddenName']"> Name cannot be Bob. </div>
+    </div>
+    <br>
+    <div formGroupName="autres">
+        <label>Email</label>
+        <input type="text" formControlName="email">
+        <div *ngIf="userForm.get('autres.email')?.invalid">
+            <div *ngIf="userForm.get('autres.email')?.errors?.['required']"> Email is required. </div>
+            <div *ngIf="userForm.get('autres.email')?.errors?.['minlength']"> Email must be at least 4 characters long. </div>
+        </div>
+        <br>
+        <label>Facebook</label>
+        <input type="text" formControlName="fb">
+        <div *ngIf="userForm.get('autres.fb')?.invalid">
+            <div *ngIf="userForm.get('autres.fb')?.errors?.['required']"> Facebook username is required. </div>
+            <div *ngIf="userForm.get('autres.fb')?.errors?.['pattern']"> Facebook username must be at least 8 alphanumeric characters. </div>
+        </div>
+    </div>
+    <br>
+    <input type="submit" value="Add" [disabled]="userForm.invalid">
+</form>

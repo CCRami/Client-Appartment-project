@@ -1,0 +1,41 @@
+.residences-container, .favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.residence-card, .favorite-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.residence-card img, .favorite-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.status-available {
+    color: green;
+}
+
+.status-sold {
+    color: red;
+}
+
+.status-construction {
+    color: orange;
+}
