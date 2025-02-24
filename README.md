@@ -18,6 +18,7 @@ To install the dependencies, run:
 
 ```sh
 npm install
+```
 
 
 ## Specification
