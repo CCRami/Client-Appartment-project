@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Residence } from './residence.model';
-
+import { ResidenceService } from '../core/services/residence.service';
 @Component({
   selector: 'app-residences',
   templateUrl: './residence.component.html',
-  styleUrls: ['./residence.component.css']
+  styleUrls: ['./residence.component.css'],
+  providers: [ResidenceService] // liste des services disponibles uniquement pour ce composant
+
 })
-export class ResidencesComponent {
-  listResidences: Residence[] = [
-    { id: 1, name: "El fel", address: "Borj Cedria", image: "../../assets/images/R1.jpeg", status: "Disponible" },
-    { id: 2, name: "El yasmine", address: "Ezzahra", image: "../../assets/images/R2.jpeg", status: "Disponible" },
-    { id: 3, name: "El Arij", address: "Rades", image: "../../assets/images/R3.jpeg", status: "Vendu" },
-    { id: 4, name: "El Anber", address: "inconnu", image: "../../assets/images/R4.jpeg", status: "En Construction" }
-  ];
+export class ResidencesComponent implements OnInit {
+  // listResidences: Residence[] = [
+  //   { id: 1, name: "El fel", address: "Borj Cedria", image: "../../assets/images/R1.jpeg", status: "Disponible" },
+  //   { id: 2, name: "El yasmine", address: "Ezzahra", image: "../../assets/images/R2.jpeg", status: "Disponible" },
+  //   { id: 3, name: "El Arij", address: "Rades", image: "../../assets/images/R3.jpeg", status: "Vendu" },
+  //   { id: 4, name: "El Anber", address: "inconnu", image: "../../assets/images/R4.jpeg", status: "En Construction" }
+  // ];
+  constructor(private rs: ResidenceService) { }
+  ngOnInit(): void {
+    this.rs.getAll().subscribe(residences => {
+      this.listResidences = residences;
+    });
+  }
+  listResidences: Residence[] = [];
 
   favoriteResidences: Residence[] = [];  // Liste des résidences favorites
   showAddresses: { [key: number]: boolean } = {};  // Gère l'affichage des adresses

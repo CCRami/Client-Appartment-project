@@ -12,7 +12,7 @@ import { NotFoundComponent } from './core/shared/not-found/not-found.component';
 import { ResidencedetailsComponent } from './residence/residencedetails/residencedetails.component';
 import { AddAppartmentComponent } from './core/add-appartment/add-appartment.component';
 import { AddClientComponent } from './core/add-client/add-client.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,8 @@ import { AddClientComponent } from './core/add-client/add-client.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
